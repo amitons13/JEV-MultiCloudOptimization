@@ -1,0 +1,444 @@
+[
+  {
+    "timestamp": "2026-10-06T09:11:00Z",
+    "logName": "projects/acme-prod/logs/compute.googleapis.com%2Fusage",
+    "severity": "WARNING",
+    "resource": {
+      "type": "gce_instance",
+      "labels": {
+        "project_id": "acme-prod",
+        "zone": "us-central1-a",
+        "instance_id": "vm-batch-n2-88"
+      }
+    },
+    "sku": "n2-highmem-96",
+    "finguard": {
+      "service": "Compute Engine",
+      "environment": "staging",
+      "team": "data-engineering",
+      "utilizationPct": 3.0,
+      "idleHours": 144,
+      "wasteCategory": "Idle",
+      "monthlyCostUSD": 648.0,
+      "projectedMonthlyWasteUSD": 615.6,
+      "recommendedAction": "Stop instance; schedule start/stop; consider Spot VM"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:14:00Z",
+    "logName": "projects/acme-prod/logs/container.googleapis.com%2Fcluster-autoscaler-visibility",
+    "severity": "WARNING",
+    "resource": {
+      "type": "k8s_cluster",
+      "labels": {
+        "project_id": "acme-prod",
+        "location": "us-central1",
+        "cluster_name": "gke-platform"
+      }
+    },
+    "sku": "n2-standard-32",
+    "finguard": {
+      "service": "GKE",
+      "environment": "prod",
+      "team": "platform",
+      "utilizationPct": 9.0,
+      "nodeCount": 40,
+      "runningPods": 52,
+      "wasteCategory": "Oversized",
+      "monthlyCostUSD": 4200.0,
+      "projectedMonthlyWasteUSD": 2940.0,
+      "recommendedAction": "Enable node auto-provisioning + bin-packing; cut to 14 nodes"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:17:00Z",
+    "logName": "projects/acme-ml/logs/container.googleapis.com%2Fgpu",
+    "severity": "WARNING",
+    "resource": {
+      "type": "k8s_cluster",
+      "labels": {
+        "project_id": "acme-ml",
+        "location": "us-west1",
+        "cluster_name": "gke-training"
+      }
+    },
+    "sku": "a2-ultragpu-8g",
+    "finguard": {
+      "service": "GKE",
+      "environment": "research",
+      "team": "ml-research",
+      "utilizationPct": 0.0,
+      "gpuCount": 8,
+      "idleHours": 96,
+      "wasteCategory": "Idle",
+      "monthlyCostUSD": 4425.0,
+      "projectedMonthlyWasteUSD": 4203.75,
+      "recommendedAction": "Scale GPU node pool to 0; use queued provisioning"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:20:00Z",
+    "logName": "projects/acme-prod/logs/cloudsql.googleapis.com%2Fmysql.err",
+    "severity": "WARNING",
+    "resource": {
+      "type": "cloudsql_database",
+      "labels": {
+        "project_id": "acme-prod",
+        "region": "us-central1",
+        "database_id": "acme-prod:pg-orders"
+      }
+    },
+    "sku": "db-custom-32-212992",
+    "finguard": {
+      "service": "Cloud SQL",
+      "environment": "prod",
+      "team": "orders",
+      "utilizationPct": 6.0,
+      "connectionsAvg24h": 4,
+      "wasteCategory": "Oversized",
+      "monthlyCostUSD": 585.0,
+      "projectedMonthlyWasteUSD": 409.5,
+      "recommendedAction": "Right-size to db-custom-4-16384"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:23:00Z",
+    "logName": "projects/acme-analytics/logs/bigquery.googleapis.com%2Fquery",
+    "severity": "ERROR",
+    "resource": {
+      "type": "bigquery_project",
+      "labels": {
+        "project_id": "acme-analytics",
+        "location": "US"
+      }
+    },
+    "sku": "On-Demand Analysis",
+    "finguard": {
+      "service": "BigQuery",
+      "environment": "prod",
+      "team": "analytics",
+      "utilizationPct": 100.0,
+      "bytesScannedLast1hTB": 412.0,
+      "repeatedFullTableScans": true,
+      "wasteCategory": "RunawayLoop",
+      "monthlyCostUSD": 9150.0,
+      "projectedMonthlyWasteUSD": 6862.5,
+      "recommendedAction": "Add partition/cluster filters; move to capacity reservation"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:26:00Z",
+    "logName": "projects/acme-ml/logs/aiplatform.googleapis.com%2Fendpoint",
+    "severity": "WARNING",
+    "resource": {
+      "type": "aiplatform.googleapis.com/Endpoint",
+      "labels": {
+        "project_id": "acme-ml",
+        "location": "us-central1",
+        "endpoint_id": "llm-serving-ep"
+      }
+    },
+    "sku": "a2-highgpu-4g",
+    "finguard": {
+      "service": "Vertex AI",
+      "environment": "prod",
+      "team": "platform-ai",
+      "utilizationPct": 0.0,
+      "predictionsLast24h": 0,
+      "replicaCount": 3,
+      "idleHours": 84,
+      "wasteCategory": "Idle",
+      "monthlyCostUSD": 3300.0,
+      "projectedMonthlyWasteUSD": 3135.0,
+      "recommendedAction": "Set min-replica=0; undeploy idle model"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:29:00Z",
+    "logName": "projects/acme-prod/logs/run.googleapis.com%2Frequests",
+    "severity": "INFO",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "acme-prod",
+        "location": "europe-west1",
+        "service_name": "pdf-renderer"
+      }
+    },
+    "sku": "Cloud Run CPU Always-On",
+    "finguard": {
+      "service": "Cloud Run",
+      "environment": "prod",
+      "team": "documents",
+      "utilizationPct": 4.0,
+      "minInstances": 20,
+      "requestsPerMin": 6,
+      "wasteCategory": "Oversized",
+      "monthlyCostUSD": 420.0,
+      "projectedMonthlyWasteUSD": 294.0,
+      "recommendedAction": "Reduce min-instances 20 -> 1; enable scale-to-zero"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:32:00Z",
+    "logName": "projects/acme-prod/logs/compute.googleapis.com%2Fusage",
+    "severity": "INFO",
+    "resource": {
+      "type": "gce_disk",
+      "labels": {
+        "project_id": "acme-prod",
+        "zone": "us-central1-b",
+        "disk_id": "pd-unattached-1024"
+      }
+    },
+    "sku": "pd-ssd",
+    "finguard": {
+      "service": "Persistent Disk",
+      "environment": "prod",
+      "team": "unassigned",
+      "utilizationPct": 0.0,
+      "status": "unattached",
+      "sizeGB": 4096,
+      "ageDays": 176,
+      "wasteCategory": "Orphaned",
+      "monthlyCostUSD": 104.4,
+      "projectedMonthlyWasteUSD": 104.4,
+      "recommendedAction": "Snapshot then delete unattached SSD persistent disk"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:35:00Z",
+    "logName": "projects/acme-prod/logs/storage.googleapis.com%2Fstorage",
+    "severity": "INFO",
+    "resource": {
+      "type": "gcs_bucket",
+      "labels": {
+        "project_id": "acme-prod",
+        "location": "US",
+        "bucket_name": "acme-raw-events-cold"
+      }
+    },
+    "sku": "Standard Storage",
+    "finguard": {
+      "service": "Cloud Storage",
+      "environment": "prod",
+      "team": "data-platform",
+      "utilizationPct": 0.0,
+      "sizeTB": 220,
+      "lastAccessDays": 300,
+      "wasteCategory": "ColdStorage",
+      "monthlyCostUSD": 693.0,
+      "projectedMonthlyWasteUSD": 623.7,
+      "recommendedAction": "Lifecycle rule to Archive storage class"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:38:00Z",
+    "logName": "projects/acme-prod/logs/compute.googleapis.com%2Fnat",
+    "severity": "INFO",
+    "resource": {
+      "type": "nat_gateway",
+      "labels": {
+        "project_id": "acme-prod",
+        "region": "asia-southeast1",
+        "gateway_name": "nat-staging"
+      }
+    },
+    "sku": "Cloud NAT",
+    "finguard": {
+      "service": "Cloud NAT",
+      "environment": "staging",
+      "team": "network",
+      "utilizationPct": 0.4,
+      "bytesProcessedGB24h": 0.3,
+      "wasteCategory": "Idle",
+      "monthlyCostUSD": 7.2,
+      "projectedMonthlyWasteUSD": 6.84,
+      "recommendedAction": "Delete idle Cloud NAT; use Private Google Access"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:41:00Z",
+    "logName": "projects/acme-dev/logs/compute.googleapis.com%2Fusage",
+    "severity": "INFO",
+    "resource": {
+      "type": "gce_reserved_address",
+      "labels": {
+        "project_id": "acme-dev",
+        "region": "us-east1",
+        "address_name": "static-ip-orphan"
+      }
+    },
+    "sku": "Static External IP (unused)",
+    "finguard": {
+      "service": "Networking",
+      "environment": "dev",
+      "team": "unassigned",
+      "utilizationPct": 0.0,
+      "status": "RESERVED",
+      "ageDays": 210,
+      "wasteCategory": "Orphaned",
+      "monthlyCostUSD": 1.09,
+      "projectedMonthlyWasteUSD": 1.09,
+      "recommendedAction": "Release unused reserved external IP"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:44:00Z",
+    "logName": "projects/acme-prod/logs/dataflow.googleapis.com%2Fjob-message",
+    "severity": "WARNING",
+    "resource": {
+      "type": "dataflow_step",
+      "labels": {
+        "project_id": "acme-prod",
+        "region": "us-central1",
+        "job_name": "streaming-enrichment"
+      }
+    },
+    "sku": "n1-standard-16 (Streaming Engine)",
+    "finguard": {
+      "service": "Dataflow",
+      "environment": "prod",
+      "team": "streaming",
+      "utilizationPct": 5.0,
+      "workerCount": 60,
+      "elementsPerSec": 120,
+      "wasteCategory": "Oversized",
+      "monthlyCostUSD": 2700.0,
+      "projectedMonthlyWasteUSD": 1890.0,
+      "recommendedAction": "Enable Horizontal Autoscaling; cap maxWorkers=12"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:47:00Z",
+    "logName": "projects/acme-prod/logs/cloudfunctions.googleapis.com%2Fcloud-functions",
+    "severity": "ERROR",
+    "resource": {
+      "type": "cloud_function",
+      "labels": {
+        "project_id": "acme-prod",
+        "region": "us-central1",
+        "function_name": "webhook-retry"
+      }
+    },
+    "sku": "Cloud Functions (2nd gen)",
+    "finguard": {
+      "service": "Cloud Functions",
+      "environment": "prod",
+      "team": "integrations",
+      "utilizationPct": 100.0,
+      "invocationsLast1h": 1680000,
+      "errorRatePct": 92.0,
+      "retryStormDetected": true,
+      "wasteCategory": "RunawayLoop",
+      "monthlyCostUSD": 1410.0,
+      "projectedMonthlyWasteUSD": 1057.5,
+      "recommendedAction": "Disable trigger; add dead-letter + backoff to stop retry storm"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T09:50:00Z",
+    "logName": "projects/acme-prod/logs/redis.googleapis.com%2Fmemorystore",
+    "severity": "WARNING",
+    "resource": {
+      "type": "redis_instance",
+      "labels": {
+        "project_id": "acme-prod",
+        "region": "us-central1",
+        "instance_id": "memorystore-cache"
+      }
+    },
+    "sku": "Redis Standard 100GB",
+    "finguard": {
+      "service": "Memorystore",
+      "environment": "prod",
+      "team": "caching",
+      "utilizationPct": 5.0,
+      "usedMemoryGB": 5.0,
+      "capacityGB": 100,
+      "wasteCategory": "Oversized",
+      "monthlyCostUSD": 480.0,
+      "projectedMonthlyWasteUSD": 336.0,
+      "recommendedAction": "Downsize Memorystore 100GB -> 10GB"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T10:08:00Z",
+    "logName": "projects/acme-prod/logs/container.googleapis.com%2Fautopilot",
+    "severity": "WARNING",
+    "resource": {
+      "type": "k8s_cluster",
+      "labels": {
+        "project_id": "acme-prod",
+        "location": "europe-west1",
+        "cluster_name": "gke-autopilot-web"
+      }
+    },
+    "sku": "autopilot-pod",
+    "finguard": {
+      "service": "GKE",
+      "environment": "prod",
+      "team": "web",
+      "utilizationPct": 11.0,
+      "cpuRequestedVCPU": 320,
+      "cpuUsedVCPU": 35,
+      "wasteCategory": "Oversized",
+      "monthlyCostUSD": 2730.0,
+      "projectedMonthlyWasteUSD": 1911.0,
+      "recommendedAction": "Right-size pod CPU/memory requests; enable VPA in Autopilot"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T10:11:00Z",
+    "logName": "projects/acme-dev/logs/container.googleapis.com%2Fcluster-autoscaler-visibility",
+    "severity": "WARNING",
+    "resource": {
+      "type": "k8s_cluster",
+      "labels": {
+        "project_id": "acme-dev",
+        "location": "us-central1",
+        "cluster_name": "gke-ci-runners"
+      }
+    },
+    "sku": "e2-standard-16",
+    "finguard": {
+      "service": "GKE",
+      "environment": "dev",
+      "team": "developer-experience",
+      "utilizationPct": 4.0,
+      "nodeCount": 18,
+      "nightTimeShutdown": false,
+      "wasteCategory": "Idle",
+      "monthlyCostUSD": 1140.0,
+      "projectedMonthlyWasteUSD": 1083.0,
+      "recommendedAction": "Scale CI node pool to 0 off-hours; use Spot pods"
+    }
+  },
+  {
+    "timestamp": "2026-10-06T10:14:00Z",
+    "logName": "projects/acme-prod/logs/compute.googleapis.com%2Fusage",
+    "severity": "NOTICE",
+    "resource": {
+      "type": "gce_disk",
+      "labels": {
+        "project_id": "acme-prod",
+        "zone": "us-central1-b",
+        "disk_id": "gke-pvc-orphan-7731"
+      }
+    },
+    "sku": "pd-ssd",
+    "finguard": {
+      "service": "GKE",
+      "environment": "prod",
+      "team": "unassigned",
+      "utilizationPct": 0.0,
+      "diskState": "UNATTACHED",
+      "sizeGB": 1024,
+      "ageDays": 119,
+      "wasteCategory": "Orphaned",
+      "monthlyCostUSD": 26.1,
+      "projectedMonthlyWasteUSD": 26.1,
+      "recommendedAction": "Delete orphaned GKE PVC-backed persistent disk"
+    }
+  }
+]
